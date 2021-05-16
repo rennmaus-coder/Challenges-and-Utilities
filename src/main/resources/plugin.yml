@@ -1,0 +1,31 @@
+name: My_plugin
+version: ${project.version}
+main: de.chris.my_plugin.Main
+api-version: 1.16
+authors: [ rennmaushunter ]
+description: My first plugin
+
+commands:
+  timer:
+    description: timer
+  sum:
+    description: prints the sum
+  invsee:
+    description: shows inventory of player
+  backpack:
+    description: opens the backpack
+    aliases:
+      - bp
+  tree_destroyer:
+    description:
+      applies tree_destroyer
+  position:
+    aliases:
+      - pos
+    description: adds a position
+  World:
+    description: creates / enters a world
+  settings:
+    description: opens the settings inventory
+  challenge:
+    description: Starts the given challenge
