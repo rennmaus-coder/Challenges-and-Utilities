@@ -15,24 +15,25 @@ Commands:
 
 	- /backpack (shows private backpack)	| alias: /bp
   
-  - /challenge <ID> 
-    - (01: If a block gets destroyed, it'll destroyed in the whole chunk (Requires a lot auf memory!!!))
-    - (02: If a player gets damaged, the player gets a random effect)
-    - (03: If a block gets destroyed, it'll drop a random item) + true / false (reset)
-	
-	- /world:
-		/world new <Name> (generates new World), /world enter <Name> (enters World)
+	  - /challenge <ID> 
+	    - (01: If a block gets destroyed, it'll destroyed in the whole chunk (Requires a lot auf memory!!!))
+	    - (02: If a player gets damaged, the player gets a random effect)
+	    - (03: If a block gets destroyed, it'll drop a random item) + true / false (reset)
+
+		- /world:
+			/world new <Name> (generates new World), /world enter <Name> (enters World)
 	
 Crafting Recipe:
 	- Saddle:
-		L L L
-		L S L
-		  T
+
+	- L L L
+	- L S L
+	-   T
 		
-		L = Leather
-		S = String
-		T = Tripwirehook
+	L = Leather
+	S = String
+	T = Tripwirehook
 		
-Ofen Recipe:
+Furnace Recipe:
 	- Rotten Flesh -> Leather
 	
