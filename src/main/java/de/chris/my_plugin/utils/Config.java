@@ -1,5 +1,6 @@
 package de.chris.my_plugin.utils;
 
+import de.chris.my_plugin.Main;
 import org.bukkit.configuration.file.YamlConfiguration;
 import java.io.File;
 import java.io.IOException;
@@ -18,15 +19,8 @@ public class Config {
     }
 
     public Config() {
-
-        File dir = new File("./plugins/my_plugin");
-
-        if (!dir.exists()){
-            dir.mkdirs();
-        }
-
-
-        this.file = new File(dir, "config.yml");
+        
+        this.file = new File(Main.get_instance().getDataFolder(), "configCNU.yml");
 
         if(!file.exists()){
             try {

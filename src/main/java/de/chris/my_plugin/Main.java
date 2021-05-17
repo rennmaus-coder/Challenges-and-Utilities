@@ -1,5 +1,6 @@
 package de.chris.my_plugin;
 
+import de.chris.my_plugin.Coins.Coin;
 import de.chris.my_plugin.commands.*;
 import de.chris.my_plugin.commands.challenges.*;
 import de.chris.my_plugin.listeners.*;
@@ -39,11 +40,11 @@ public final class Main extends JavaPlugin {
         manager.registerEvents(new JoinListener(), this);
         manager.registerEvents(new QuitListener(), this);
         manager.registerEvents(new BreakListener(), this);
-        manager.registerEvents(new inventory_listener(), this);
         manager.registerEvents(new DamageListener(), this);
 
         /*Timer*/
         timer = new Timer();
+        Coin.load();
 
         /*Rezepte*/
         rottenflesh_leather.oven_rec1();
@@ -66,8 +67,8 @@ public final class Main extends JavaPlugin {
         Objects.requireNonNull(getCommand("backpack")).setExecutor(new backpack_command());
         Objects.requireNonNull(getCommand("position")).setExecutor(new position_command());
         Objects.requireNonNull(getCommand("World")).setExecutor(new new_World_command());
-        Objects.requireNonNull(getCommand("settings")).setExecutor(new settings_inventory_command());
         Objects.requireNonNull(getCommand("challenge")).setExecutor(new challengeApply());
+        Objects.requireNonNull(getCommand("coins")).setExecutor(new Coins());
 
     }
 
@@ -80,6 +81,7 @@ public final class Main extends JavaPlugin {
         timer.save();
         backpackManager.save();
         position_command.save();
+        Coin.save();
 
         config.save();
     }

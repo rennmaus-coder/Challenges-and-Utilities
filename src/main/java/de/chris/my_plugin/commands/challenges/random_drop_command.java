@@ -21,10 +21,10 @@ public class random_drop_command{
             sender.sendMessage(prefix() + "resetted the challenge");
         }
         drop_isRunning = !drop_isRunning;
-        Bukkit.broadcastMessage(prefix() + "drop_challenge Status: " + drop_isRunning);
+        Bukkit.broadcastMessage(prefix() + "drop_challenge State: " + drop_isRunning);
     }
     public static void change(){
         drop_isRunning = !drop_isRunning;
-        Bukkit.broadcastMessage(prefix() + "drop_challenge Status: " + drop_isRunning);
+        Bukkit.broadcastMessage(prefix() + "drop_challenge State: " + drop_isRunning);
     }
 }

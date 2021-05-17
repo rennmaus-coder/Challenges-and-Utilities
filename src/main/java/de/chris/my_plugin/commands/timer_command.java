@@ -26,11 +26,10 @@ public class timer_command implements CommandExecutor {
 
 
                 if (timer.isRunning()) {
-                    sender.sendMessage(prefix() + ChatColor.RED + "Timer läuft schon");
                     break;
                 }
                 timer.setRunning(true);
-                sender.sendMessage(prefix() + ChatColor.BLUE + "Der timer wurde gestartet");
+                sender.sendMessage(prefix() + ChatColor.BLUE + "Timer started");
 
                 break;
             }
@@ -38,17 +37,16 @@ public class timer_command implements CommandExecutor {
                 Timer timer = Main.get_instance().getTimer();
 
                 if (!timer.isRunning()) {
-                    sender.sendMessage(prefix() + ChatColor.RED + "Timer läuft nicht");
                     break;
                 }
                 timer.setRunning(false);
-                sender.sendMessage(prefix() + ChatColor.BLUE + "Der timer wurde gestoppt");
+                sender.sendMessage(prefix() + ChatColor.BLUE + "Timer stopped");
                 break;
             }
             case "time" -> {
 
                 if (args.length != 2) {
-                    sender.sendMessage(prefix() + ChatColor.GRAY + "Verwendung: " + ChatColor.GREEN + "/timer time <Zeit>");
+                    sender.sendMessage(prefix() + ChatColor.GRAY + "Usage: " + ChatColor.GREEN + "/timer time <seconds>");
                     return true;
                 }
 
@@ -57,9 +55,9 @@ public class timer_command implements CommandExecutor {
 
                     timer.setRunning(false);
                     timer.setTime(Long.parseLong(args[1]));
-                    sender.sendMessage(prefix() + ChatColor.BLUE + "Der timer wurde auf " + args[1] + " gesetzt");
+                    sender.sendMessage(prefix() + ChatColor.BLUE + "Timer has been set to " + args[1]);
                 } catch (NumberFormatException e) {
-                    sender.sendMessage(prefix() + ChatColor.RED + "Der Zweite Parameter muss eine Zahl sein");
+                    sender.sendMessage(prefix() + ChatColor.RED + "The 2nd Argument has to be a number");
                 }
 
                 break;
@@ -69,7 +67,7 @@ public class timer_command implements CommandExecutor {
 
                 timer.setRunning(false);
                 timer.setTime(0L);
-                sender.sendMessage(prefix() + ChatColor.BLUE + "Der timer wurde zurückgesetzt");
+                sender.sendMessage(prefix() + ChatColor.BLUE + "Timer has been reset");
                 break;
             }
             default -> sendUsage(sender);
@@ -79,7 +77,7 @@ public class timer_command implements CommandExecutor {
     }
 
     private void sendUsage(CommandSender sender){
-        sender.sendMessage(prefix() + ChatColor.GRAY + "Verwendung: "+ ChatColor.GREEN + "/timer resume, /timer pause, /timer time <Zeit>, /timer reset");
+        sender.sendMessage(prefix() + ChatColor.GRAY + "Usage: "+ ChatColor.GREEN + "/timer resume, /timer pause, /timer time <seconds>, /timer reset");
     }
 
     public static void change(){
@@ -87,10 +85,9 @@ public class timer_command implements CommandExecutor {
 
 
         if (timer.isRunning()) {
-            Bukkit.broadcastMessage(prefix() + ChatColor.RED + "Timer läuft schon");
             return;
         }
         timer.setRunning(true);
-        Bukkit.broadcastMessage(prefix() + ChatColor.BLUE + "Der timer wurde gestartet");
+        Bukkit.broadcastMessage(prefix() + ChatColor.BLUE + "Timer started");
     }
 }

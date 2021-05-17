@@ -1,5 +1,6 @@
 package de.chris.my_plugin.listeners;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -14,8 +15,6 @@ public class JoinListener implements Listener {
     public void onJoin(PlayerJoinEvent event){
         Player player = event.getPlayer();
 
-        event.setJoinMessage(prefix() + ChatColor.GREEN.toString() + player.getName() + " hat den Server betreten");
-
-        player.sendMessage(prefix() + ChatColor.GOLD + "Herzlich Willkommen");
+        event.setJoinMessage(prefix() + ChatColor.GREEN.toString() + player.getName() + " has found its way to " + Bukkit.getServer().getName());
     }
 }

@@ -15,6 +15,6 @@ public class randomEffect{
 
         isRunning = !isRunning;
 
-        sender.sendMessage(prefix() + ChatColor.GREEN + "Status der Challenge: " + isRunning);
+        sender.sendMessage(prefix() + ChatColor.GREEN + "random Effect State: " + isRunning);
     }
 }

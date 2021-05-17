@@ -54,7 +54,7 @@ public class Timer {
 
             if (!isRunning()){
                 player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(ChatColor.RED.toString() +
-                        ChatColor.BOLD + FormattedTime(getTime()) + " (gestoppt)"));
+                        ChatColor.BOLD + FormattedTime(getTime()) + " (stopped)"));
                 continue;
             }
             player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(ChatColor.GOLD.toString() +

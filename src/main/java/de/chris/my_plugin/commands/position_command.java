@@ -9,6 +9,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
+import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +25,7 @@ public class position_command implements TabExecutor {
     public static List<String> locations = new ArrayList<>();
 
     public static void load(){
-        if (!Main.get_instance().getConfiguration().getConfig().get("positions.x").equals(null)){
+        if (Main.get_instance().getConfiguration().getConfig().contains("positions.x")){
             xcoords = (List<Integer>) Main.get_instance().getConfiguration().getConfig().get("positions.x");
             ycoords = (List<Integer>) Main.get_instance().getConfiguration().getConfig().get("positions.y");
             zcoords = (List<Integer>) Main.get_instance().getConfiguration().getConfig().get("positions.z");
@@ -47,6 +48,10 @@ public class position_command implements TabExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String s, String[] args) {
 
+        if (!(sender instanceof Player)){
+            return false;
+        }
+
         if (args.length == 0){
             sender.sendMessage(prefix() + "Usage: /pos [show/add/del] <Name>");
         }
@@ -59,7 +64,7 @@ public class position_command implements TabExecutor {
                 int z = zcoords.get(locations.indexOf(port));
                 sender.sendMessage(prefix() + "Position "+port+" bei "+x+" "+ y +" " + z + "");
             } else {
-                sender.sendMessage(prefix() + "Positon " + port + " existiert nicht");
+                sender.sendMessage(prefix() + "Positon " + port + " doesn't exist");
             }
 
 
@@ -67,19 +72,22 @@ public class position_command implements TabExecutor {
         }
 
         if (args[0].equals("add")){
-            locations.add(args[1]);
+            if (!args[1].equals("")){
+                locations.add(args[1]);
 
-            int X = (int) Objects.requireNonNull(Bukkit.getPlayer(sender.getName())).getLocation().getX();
-            int Y = (int) Objects.requireNonNull(Bukkit.getPlayer(sender.getName())).getLocation().getY();
-            int Z = (int) Objects.requireNonNull(Bukkit.getPlayer(sender.getName())).getLocation().getZ();
+                int X = (int) Objects.requireNonNull(Bukkit.getPlayer(sender.getName())).getLocation().getX();
+                int Y = (int) Objects.requireNonNull(Bukkit.getPlayer(sender.getName())).getLocation().getY();
+                int Z = (int) Objects.requireNonNull(Bukkit.getPlayer(sender.getName())).getLocation().getZ();
 
-            xcoords.add(X);
-            ycoords.add(Y);
-            zcoords.add(Z);
+                xcoords.add(X);
+                ycoords.add(Y);
+                zcoords.add(Z);
 
-            sender.sendMessage(prefix() + "added " + args[0]);
+                sender.sendMessage(prefix() + "added " + args[1]);
 
-            return false;
+                return false;
+            }
+            sender.sendMessage(prefix() + "Missing Argument: name");
         }
 
         if (args[0].equals("del")){
@@ -89,6 +97,9 @@ public class position_command implements TabExecutor {
                 xcoords.remove(index);
                 ycoords.remove(index);
                 zcoords.remove(index);
+                sender.sendMessage(prefix() + "Position " + args[1] + " was deleted successfully");
+            } else {
+                sender.sendMessage(prefix() + "Position " + args[1] + " not available");
             }
         }
         return false;
@@ -116,6 +127,24 @@ public class position_command implements TabExecutor {
                     types.add("add");
                     types.add("del");
                     types.add("show");
+                }
+                return types;
+            }
+            if (args.length == 2){
+                ArrayList<String> types = new ArrayList<>();
+                if (!args[1].equals("")){
+                    if (args[0].equals("del") || args[0].equals("show")){
+                        for (String loc : locations){
+                            if (loc.startsWith(args[1])){
+                                types.add(loc);
+                            }
+                        }
+                    }
+
+                } else {
+                    if (args[0].equals("del") || args[0].equals("show")){
+                        types.addAll(locations);
+                    }
                 }
                 return types;
             }

@@ -13,6 +13,6 @@ public class Chunk_Block_challenge_applier {
 
     public static void change(){
         isActive = !isActive;
-        Bukkit.broadcastMessage(prefix() + "Block Chunk challenge Status: " + isActive);
+        Bukkit.broadcastMessage(prefix() + "Block Chunk challenge State: " + isActive);
     }
 }

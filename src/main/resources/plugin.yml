@@ -16,16 +16,13 @@ commands:
     description: opens the backpack
     aliases:
       - bp
-  tree_destroyer:
-    description:
-      applies tree_destroyer
   position:
     aliases:
       - pos
     description: adds a position
   World:
     description: creates / enters a world
-  settings:
-    description: opens the settings inventory
   challenge:
     description: Starts the given challenge
+  coins:
+    description: The coin System
