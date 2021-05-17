@@ -4,7 +4,7 @@ Spigot Plugin for Minecraft 1.16
 Commands:
 
 	- /timer:
-		/timer resume (starts Timer), /timer pause (stopps Timer), /timer time <Zeit> (sets Zeit), /timer reset (set Timer to 0)
+		/timer resume (starts Timer), /timer pause (stopps Timer), /timer time <seconds> (sets Zeit), /timer reset (set Timer to 0)
 
 	- /position:
 		/position add <Name> (Adds a position), /position show <Name> (shows the Position), /position del <Name> (deletes the position)    | alias: /pos
@@ -20,9 +20,13 @@ Commands:
 	    - (02: If a player gets damaged, the player gets a random effect)
 	    - (03: If a block gets destroyed, it'll drop a random item) + true / false (reset)
 
-		- /world:
-			/world new <Name> (generates new World), /world enter <Name> (enters World)
-	
+	- /world:
+		/world new <Name> <Type> (generates new World), /world enter <Name> (enters World)
+	- /coins:
+		- /coins pay <to> <amount> 
+		- /coins show (shows amount of coins)
+		- /coins set <amount> (sets to coins to the specified amount (OP only))	
+
 Crafting Recipe:
 	- Saddle:
 
