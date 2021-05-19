@@ -1,5 +1,6 @@
 package de.chris.my_plugin.listeners;
 
+import de.chris.my_plugin.Scoreboard.ScoreBoard;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -15,6 +16,8 @@ public class JoinListener implements Listener {
     public void onJoin(PlayerJoinEvent event){
         Player player = event.getPlayer();
 
-        event.setJoinMessage(prefix() + ChatColor.GREEN.toString() + player.getName() + " has found its way to " + Bukkit.getServer().getName());
+        event.setJoinMessage(prefix() + ChatColor.GREEN.toString() + "Hello " + player.getName());
+
+        new ScoreBoard(player);
     }
 }

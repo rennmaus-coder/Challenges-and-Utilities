@@ -1,11 +1,16 @@
 package de.chris.my_plugin.Coins;
 
 import de.chris.my_plugin.Main;
+import org.bukkit.Material;
+import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
+
+import static de.chris.my_plugin.utils.Utility.prefix;
 
 public class Coin {
 

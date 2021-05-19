@@ -7,11 +7,16 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabExecutor;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import static de.chris.my_plugin.utils.Utility.prefix;
 
 
-public class timer_command implements CommandExecutor {
+public class timer_command implements TabExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -80,14 +85,31 @@ public class timer_command implements CommandExecutor {
         sender.sendMessage(prefix() + ChatColor.GRAY + "Usage: "+ ChatColor.GREEN + "/timer resume, /timer pause, /timer time <seconds>, /timer reset");
     }
 
-    public static void change(){
-        Timer timer = Main.get_instance().getTimer();
+    @Override
+    public List<String> onTabComplete(CommandSender sender, Command command, String s, String[] args) {
+        ArrayList<String> list = new ArrayList<>();
 
-
-        if (timer.isRunning()) {
-            return;
+        if (!args[0].equals("")){
+            if ("resume".startsWith(args[0])){
+                list.add("resume");
+            }
+            if ("stop".startsWith(args[0])){
+                list.add("stop");
+            }
+            if ("reset".startsWith(args[0])){
+                list.add("reset");
+            }
+            if ("set".startsWith(args[0])){
+                list.add("set");
+            }
+        } else {
+            list.add("set");
+            list.add("resume");
+            list.add("stop");
+            list.add("set");
+            list.add("reset");
         }
-        timer.setRunning(true);
-        Bukkit.broadcastMessage(prefix() + ChatColor.BLUE + "Timer started");
+        Collections.sort(list);
+        return list;
     }
 }

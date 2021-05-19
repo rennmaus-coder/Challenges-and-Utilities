@@ -1,6 +1,7 @@
 package de.chris.my_plugin.commands;
 
 import de.chris.my_plugin.Coins.Coin;
+import de.chris.my_plugin.Scoreboard.ScoreBoard;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
