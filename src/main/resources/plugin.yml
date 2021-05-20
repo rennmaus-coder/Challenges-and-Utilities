@@ -8,8 +8,6 @@ description: My first plugin
 commands:
   timer:
     description: timer
-  sum:
-    description: prints the sum
   invsee:
     description: shows inventory of player
   backpack:
