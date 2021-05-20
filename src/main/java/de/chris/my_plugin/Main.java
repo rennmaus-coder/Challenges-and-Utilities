@@ -62,7 +62,6 @@ public final class Main extends JavaPlugin {
     private void enable_commands() {
 
         Objects.requireNonNull(getCommand("timer")).setExecutor(new timer_command());
-        Objects.requireNonNull(getCommand("sum")).setExecutor(new sum_command());
         Objects.requireNonNull(getCommand("invsee")).setExecutor(new invsee_command());
         Objects.requireNonNull(getCommand("backpack")).setExecutor(new backpack_command());
         Objects.requireNonNull(getCommand("position")).setExecutor(new position_command());
