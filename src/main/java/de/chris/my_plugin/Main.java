@@ -13,6 +13,7 @@ import org.bukkit.World;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.text.spi.CollatorProvider;
 import java.util.Objects;
 
 import static de.chris.my_plugin.commands.new_World_command.worlds;

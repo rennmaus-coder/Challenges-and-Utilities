@@ -1,8 +1,8 @@
 package de.chris.my_plugin.listeners;
 
 import de.chris.my_plugin.Scoreboard.ScoreBoard;
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -19,5 +19,7 @@ public class JoinListener implements Listener {
         event.setJoinMessage(prefix() + ChatColor.GREEN.toString() + "Hello " + player.getName());
 
         new ScoreBoard(player);
+
+        player.getAttribute(Attribute.GENERIC_ATTACK_SPEED).setBaseValue(16);
     }
 }
