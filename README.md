@@ -26,6 +26,7 @@ Commands:
 		- /coins pay <to> <amount> 
 		- /coins show (shows amount of coins)
 		- /coins set <amount> (sets to coins to the specified amount (OP only))	
+	- /pvp [1.8/1.9] (sets the Combat version to 1.8 or 1.9)
 
 Crafting Recipe:
 	- Saddle:
