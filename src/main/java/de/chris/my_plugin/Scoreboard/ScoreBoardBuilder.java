@@ -13,6 +13,7 @@ public abstract class ScoreBoardBuilder {
 
     protected final Player player;
 
+    // Constructor
     public ScoreBoardBuilder(Player player, String displayName){
         this.player = player;
 
@@ -31,18 +32,20 @@ public abstract class ScoreBoardBuilder {
 
         createScoreboard();
     }
-
-    public abstract void update();
+     // Abstract Method to create the Scoreboard
     public abstract void createScoreboard();
 
+    // Sets the Display Name
     public void setDisplayName(String name){
         this.objective.setDisplayName(name);
     }
 
+    // Sets a Score
     public void setScore(String content, int score){
         this.objective.getScore(content).setScore(score);
     }
 
+    // Removes a Score
     public void removeScore(String content){
         this.scoreboard.resetScores(content);
     }

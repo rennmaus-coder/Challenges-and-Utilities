@@ -11,9 +11,10 @@ import java.util.HashMap;
 
 public class ScoreBoard extends ScoreBoardBuilder{
 
+    // Old coins, to replace and update the Scoreboard
     private int oldCoins = Coin.getCoins(player.getUniqueId().toString());
 
-
+    // Constructor
     public ScoreBoard(Player player){
         super(player, "   " + ChatColor.GREEN + player.getName() + "   ");
 
@@ -39,9 +40,5 @@ public class ScoreBoard extends ScoreBoardBuilder{
 
         setScore(ChatColor.DARK_GRAY.toString(), 2);
         setScore(ChatColor.GOLD + "Coins: " +Coin.getCoins(player.getUniqueId().toString()) + "", 1);
-    }
-    @Override
-    public void update(){
-
     }
 }

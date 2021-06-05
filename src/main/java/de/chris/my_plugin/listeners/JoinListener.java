@@ -19,7 +19,5 @@ public class JoinListener implements Listener {
         event.setJoinMessage(prefix() + ChatColor.GREEN.toString() + "Hello " + player.getName());
 
         new ScoreBoard(player);
-
-        player.getAttribute(Attribute.GENERIC_ATTACK_SPEED).setBaseValue(16);
     }
 }

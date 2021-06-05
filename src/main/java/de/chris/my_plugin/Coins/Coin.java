@@ -16,7 +16,7 @@ public class Coin {
 
     private static HashMap<String, Integer> owners;
 
-
+    // This method returns the Coins of the specified Player
     public static int getCoins(String uuid){
         if (owners.containsKey(uuid)){
             return owners.get(uuid);
@@ -27,6 +27,7 @@ public class Coin {
 
     }
 
+    // This method sets the Coins for the specified Player
     public static void setCoins(String uuid, int coins){
         if (!owners.containsKey(uuid)){
             owners.put(uuid, coins);
@@ -34,6 +35,8 @@ public class Coin {
         }
         owners.replace(uuid, coins);
     }
+
+    // This method adds the Coins specified to the getter and removes the coins from the sender
     public static void addCoins(String uuid_getter, int coins, String uuid_sender){
         if (!owners.containsKey(uuid_getter)){
             owners.put(uuid_getter, 100 + coins);
@@ -48,6 +51,7 @@ public class Coin {
 
     }
 
+    // This method saves the coins with the UUID
     public static void save(){
         if (!owners.isEmpty()){
             List<String> l = new ArrayList<String>(owners.keySet());
@@ -56,6 +60,8 @@ public class Coin {
             Main.get_instance().getConfiguration().getConfig().set("Coins.coins", coins);
         }
     }
+
+    // this method loads the coins and UUIDs
     public static void load(){
         if (!Main.get_instance().getConfiguration().getConfig().contains("Coins.UUID")){
             owners = new HashMap<String, Integer>();

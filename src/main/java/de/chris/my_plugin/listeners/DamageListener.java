@@ -2,9 +2,12 @@ package de.chris.my_plugin.listeners;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.attribute.Attribute;
+import org.bukkit.attribute.AttributeInstance;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
@@ -45,4 +48,10 @@ public class DamageListener implements Listener {
         }
     }
 
+    @EventHandler
+    public void EntityDamage(EntityDamageByEntityEvent e){
+        if (e.getCause() == EntityDamageEvent.DamageCause.ENTITY_SWEEP_ATTACK){
+            e.setCancelled(true);
+        }
+    }
 }

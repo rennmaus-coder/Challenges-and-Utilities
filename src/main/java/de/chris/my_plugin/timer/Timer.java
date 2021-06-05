@@ -16,6 +16,7 @@ public class Timer {
     private boolean running;
     private Long time;
 
+    // Constructor
     public Timer() {
 
         Config config = Main.get_instance().getConfiguration();
@@ -32,22 +33,27 @@ public class Timer {
 
     }
 
+    // Returns true if the timer is running
     public boolean isRunning() {
         return running;
     }
 
+    // Sets if the timer is running or not
     public void setRunning(boolean running) {
         this.running = running;
     }
 
+    // Returns the time
     public Long getTime() {
         return time;
     }
 
+    // Sets the time
     public void setTime(Long time) {
         this.time = time;
     }
 
+    // Sets the time to the actionbar of each player
     public void ActionBar(){
 
         for (Player player : Bukkit.getOnlinePlayers()){
@@ -62,12 +68,14 @@ public class Timer {
         }
     }
 
+    // saves the current timer state
     public void save(){
         Config config = Main.get_instance().getConfiguration();
 
         config.getConfig().set("timer.time", time);
     }
 
+    // Updates the timer each second
     private void run(){
         new BukkitRunnable(){
             @Override

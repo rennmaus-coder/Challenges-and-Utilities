@@ -8,6 +8,7 @@ import java.util.*;
 
 public class BackpackManager {
 
+    // The Hashmap to combine the Backpack and the Player
     private final Map<UUID, Backpack> map;
 
     public BackpackManager() {
@@ -16,6 +17,7 @@ public class BackpackManager {
         load();
     }
 
+    // Returns the Backpack of the specified player
     public Backpack getBackpack(UUID uuid){
 
         if(map.containsKey(uuid)){
@@ -29,10 +31,12 @@ public class BackpackManager {
         return map.getOrDefault(uuid, new Backpack(uuid));
     }
 
+    // Sets a Backpack for a player
     public void setBackpack(UUID uuid, Backpack backpack){
         map.put(uuid, backpack);
     }
 
+    // Loads the Backpacks
     private void load(){
         Config config = Main.get_instance().getConfiguration();
 
@@ -51,6 +55,7 @@ public class BackpackManager {
         });
     }
 
+    // Saves the hashmap with UUIDs and Backpacks
     public void save(){
         Config config = Main.get_instance().getConfiguration();
 

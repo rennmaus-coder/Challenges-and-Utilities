@@ -18,13 +18,13 @@ public class random_drop_command{
     public static void change(boolean reset, CommandSender sender){
         if (reset){
             used.clear();
-            sender.sendMessage(prefix() + "resetted the challenge");
+            sender.sendMessage(prefix() + "resetted the drops");
         }
         drop_isRunning = !drop_isRunning;
-        Bukkit.broadcastMessage(prefix() + "drop_challenge State: " + drop_isRunning);
+        Bukkit.broadcastMessage(prefix() + "drop challenge State: " + drop_isRunning);
     }
     public static void change(){
         drop_isRunning = !drop_isRunning;
-        Bukkit.broadcastMessage(prefix() + "drop_challenge State: " + drop_isRunning);
+        Bukkit.broadcastMessage(prefix() + "drop challenge State: " + drop_isRunning);
     }
 }

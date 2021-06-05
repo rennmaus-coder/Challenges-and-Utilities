@@ -9,11 +9,13 @@ import de.chris.my_plugin.backpack.BackpackManager;
 import de.chris.my_plugin.timer.Timer;
 import de.chris.my_plugin.utils.Config;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.text.spi.CollatorProvider;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Objects;
 
 import static de.chris.my_plugin.commands.new_World_command.worlds;
@@ -31,6 +33,7 @@ public final class Main extends JavaPlugin {
         instance = this;
         config = new Config();
         position_command.load();
+        BreakListener.load();
     }
 
     @Override
@@ -42,6 +45,7 @@ public final class Main extends JavaPlugin {
         manager.registerEvents(new QuitListener(), this);
         manager.registerEvents(new BreakListener(), this);
         manager.registerEvents(new DamageListener(), this);
+        manager.registerEvents(new MenuListener(), this);
 
         /*Timer*/
         timer = new Timer();
@@ -58,8 +62,11 @@ public final class Main extends JavaPlugin {
         for (World world:Bukkit.getWorlds()){
             worlds.put(world.getName(), world);
         }
+
+        createDropList();
     }
 
+    // Method, wich enables all commands
     private void enable_commands() {
 
         Objects.requireNonNull(getCommand("timer")).setExecutor(new timer_command());
@@ -69,6 +76,7 @@ public final class Main extends JavaPlugin {
         Objects.requireNonNull(getCommand("World")).setExecutor(new new_World_command());
         Objects.requireNonNull(getCommand("challenge")).setExecutor(new challengeApply());
         Objects.requireNonNull(getCommand("coins")).setExecutor(new Coins());
+        Objects.requireNonNull(getCommand("pvp")).setExecutor(new PVPMode());
 
     }
 
@@ -82,19 +90,38 @@ public final class Main extends JavaPlugin {
         backpackManager.save();
         position_command.save();
         Coin.save();
+        BreakListener.save();
 
         config.save();
     }
 
+    // Returns the instance of the main Class
     public static Main get_instance() {
         return instance;
     }
 
+    // Returns an instance of the Timer Class
     public Timer getTimer() {
         return timer;
     }
 
+    // Returns an instance of the Config Class
     public Config getConfiguration() {
         return config;
+    }
+
+    public static ArrayList<Material> drops = new ArrayList<Material>();
+
+    public static void createDropList(){
+
+        Material[] d = Material.values();
+        drops = new ArrayList<Material>(Arrays.asList(d));
+
+        drops.removeIf(m -> !m.isBlock());
+        drops.removeIf(Material::isAir);
+        drops.removeIf(m -> !m.isItem());
+
+        drops.removeIf(m -> m.toString().contains("LEGACY"));
+
     }
 }
