@@ -77,6 +77,7 @@ public final class Main extends JavaPlugin {
         Objects.requireNonNull(getCommand("challenge")).setExecutor(new challengeApply());
         Objects.requireNonNull(getCommand("coins")).setExecutor(new Coins());
         Objects.requireNonNull(getCommand("pvp")).setExecutor(new PVPMode());
+        Objects.requireNonNull(getCommand("rdc")).setExecutor(new random_drop_command());
 
     }
 

@@ -26,3 +26,5 @@ commands:
     description: The coin System
   pvp:
     description: Sets the PVP either to the new one (1.9+) or the old one (1.8)
+  rdc:
+    description: Can only run, when random drop challenge is asking to reset the drops
